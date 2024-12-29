@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageHeader from '../../components/shared/PageHeader';
-import FeatureCard from '../../components/products/shared/FeatureCard';
+import ProductCard from '../../components/products/shared/ProductCard';
 import ViewToggle from '../../components/video-analytics/ViewToggle';
 import { videoAnalyticsFeatures } from '../../data/videoAnalyticsFeatures';
 import FadeInSection from '../../components/animations/FadeInSection';
@@ -35,48 +35,9 @@ const VideoAnalytics = () => {
               <FadeInSection key={feature.title} delay={index * 100}>
                 <Link
                   to={feature.title === 'Intrusion Detection' ? '/products/video-analytics/intrusion-detection' : '#'}
-                  className="block group"
+                  className="block"
                 >
-                  {view === 'grid' ? (
-                    <FeatureCard {...feature} />
-                  ) : (
-                    <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors">
-                      <div className="flex">
-                        <div className="w-48 h-48 flex-shrink-0">
-                          <img
-                            src={feature.image}
-                            alt={feature.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <div className="flex-1 p-6">
-                          <div className="flex items-center mb-2">
-                            <feature.icon className="w-6 h-6 text-blue-400 mr-2" />
-                            <h3 className="text-xl font-semibold text-white">
-                              {feature.title}
-                            </h3>
-                          </div>
-                          <p className="text-gray-300 mb-4">{feature.description}</p>
-                          <div className="flex items-center text-sm text-blue-400">
-                            Learn more
-                            <svg
-                              className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+                  <ProductCard {...feature} layout={view} />
                 </Link>
               </FadeInSection>
             ))}

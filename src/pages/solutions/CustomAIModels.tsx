@@ -1,25 +1,25 @@
 import React from 'react';
 import { Brain, Settings, Layers, Database, Cloud, Shield } from 'lucide-react';
-import PageHeader from '../../components/shared/PageHeader';
 import SolutionLayout from '../../components/solutions/layout/SolutionLayout';
-import Card from '../../components/solutions/ui/Card';
-import FadeInSection from '../../components/animations/FadeInSection';
+import HeroSection from '../../components/solutions/ui/HeroSection';
+import FeatureGrid from '../../components/solutions/ui/FeatureGrid';
+import FloatingShapes from '../../components/solutions/ui/FloatingShapes';
 
 const features = [
   {
     icon: Brain,
     title: 'Custom Training',
-    description: 'AI models trained specifically for your unique data and requirements'
+    description: 'AI models trained specifically for your unique requirements'
   },
   {
     icon: Settings,
     title: 'Model Optimization',
-    description: 'Fine-tuning and performance optimization for maximum efficiency'
+    description: 'Fine-tuning and performance optimization for efficiency'
   },
   {
     icon: Layers,
     title: 'Architecture Design',
-    description: 'Custom neural network architectures tailored to your needs'
+    description: 'Custom neural network architectures for your needs'
   },
   {
     icon: Database,
@@ -29,7 +29,7 @@ const features = [
   {
     icon: Cloud,
     title: 'Deployment Options',
-    description: 'Flexible deployment solutions for cloud or edge computing'
+    description: 'Flexible deployment for cloud or edge computing'
   },
   {
     icon: Shield,
@@ -41,26 +41,13 @@ const features = [
 const CustomAIModels = () => {
   return (
     <SolutionLayout>
-      <PageHeader
-        title="Custom AI Models"
-        description="Tailored AI solutions for your specific needs"
-        image="https://images.unsplash.com/photo-1501526029524-a8ea952b15be"
-      />
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FadeInSection key={feature.title} delay={index * 100}>
-              <Card className="p-6 hover:translate-y-[-4px]">
-                <feature.icon className="w-12 h-12 text-solution-primary mb-4" />
-                <h3 className="text-xl font-semibold text-solution-text-primary mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-solution-text-body">{feature.description}</p>
-              </Card>
-            </FadeInSection>
-          ))}
-        </div>
+      <div className="relative min-h-screen">
+        <FloatingShapes />
+        <HeroSection
+          title="Custom AI Models"
+          description="Tailored artificial intelligence solutions for your specific needs"
+        />
+        <FeatureGrid features={features} />
       </div>
     </SolutionLayout>
   );

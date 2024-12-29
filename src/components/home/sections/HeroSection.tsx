@@ -17,12 +17,12 @@ const HeroSection = () => {
         >
           {/* Primary Video */}
           <source
-            src="https://cdn.coverr.co/videos/coverr-neural-network-visualization-1573/1080p.mp4"
+            src="https://videos.pexels.com/video-files/3141208/3141208-uhd_2560_1440_25fps.mp4"
             type="video/mp4"
           />
           {/* Fallback Video */}
           <source
-            src="https://cdn.coverr.co/videos/coverr-artificial-intelligence-visualization-2741/1080p.mp4"
+            src="https://videos.pexels.com/video-files/6964235/6964235-hd_1920_1080_25fps.mp4"
             type="video/mp4"
           />
           {/* Captions */}

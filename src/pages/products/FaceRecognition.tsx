@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PageHeader from '../../components/shared/PageHeader';
-import FeatureCard from '../../components/products/shared/FeatureCard';
+import ProductCard from '../../components/products/shared/ProductCard';
 import ViewToggle from '../../components/video-analytics/ViewToggle';
 import { faceRecognitionFeatures } from '../../data/faceRecognitionFeatures';
 import FadeInSection from '../../components/animations/FadeInSection';
@@ -32,30 +32,7 @@ const FaceRecognition = () => {
           }`}>
             {faceRecognitionFeatures.map((feature, index) => (
               <FadeInSection key={feature.title} delay={index * 100}>
-                {view === 'grid' ? (
-                  <FeatureCard {...feature} />
-                ) : (
-                  <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors">
-                    <div className="flex">
-                      <div className="w-48 h-48 flex-shrink-0">
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1 p-6">
-                        <div className="flex items-center mb-2">
-                          <feature.icon className="w-6 h-6 text-rose-400 mr-2" />
-                          <h3 className="text-xl font-semibold text-white">
-                            {feature.title}
-                          </h3>
-                        </div>
-                        <p className="text-gray-300">{feature.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <ProductCard {...feature} layout={view} />
               </FadeInSection>
             ))}
           </div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Shield, Camera, Lock } from 'lucide-react';
-import PageHeader from '../../components/shared/PageHeader';
+import { Shield, Camera, Lock, AlertTriangle, Users, Cpu } from 'lucide-react';
 import SolutionLayout from '../../components/solutions/layout/SolutionLayout';
-import Card from '../../components/solutions/ui/Card';
-import FadeInSection from '../../components/animations/FadeInSection';
+import HeroSection from '../../components/solutions/ui/HeroSection';
+import FeatureGrid from '../../components/solutions/ui/FeatureGrid';
+import FloatingShapes from '../../components/solutions/ui/FloatingShapes';
 
 const features = [
   {
@@ -13,39 +13,41 @@ const features = [
   },
   {
     icon: Camera,
-    title: 'Surveillance',
-    description: 'Intelligent video surveillance systems with advanced analytics'
+    title: 'Smart Surveillance',
+    description: 'Intelligent video surveillance with advanced analytics'
   },
   {
     icon: Lock,
     title: 'Access Control',
     description: 'Advanced biometric access control with multi-factor authentication'
+  },
+  {
+    icon: AlertTriangle,
+    title: 'Incident Response',
+    description: 'Automated incident detection and rapid response protocols'
+  },
+  {
+    icon: Users,
+    title: 'Identity Management',
+    description: 'Centralized identity and access management system'
+  },
+  {
+    icon: Cpu,
+    title: 'Edge Processing',
+    description: 'Real-time security processing at the network edge'
   }
 ];
 
 const SmartSecurity = () => {
   return (
     <SolutionLayout>
-      <PageHeader
-        title="Smart Security Solutions"
-        description="Next-generation security powered by AI"
-        image="https://images.unsplash.com/photo-1558002038-1055907df827"
-      />
-      
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <FadeInSection key={feature.title} delay={index * 100}>
-              <Card className="p-6 hover:translate-y-[-4px]">
-                <feature.icon className="w-12 h-12 text-solution-primary mb-4" />
-                <h3 className="text-xl font-semibold text-solution-text-primary mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-solution-text-body">{feature.description}</p>
-              </Card>
-            </FadeInSection>
-          ))}
-        </div>
+      <div className="relative min-h-screen">
+        <FloatingShapes />
+        <HeroSection
+          title="Smart Security Solutions"
+          description="Next-generation security powered by advanced AI technology"
+        />
+        <FeatureGrid features={features} />
       </div>
     </SolutionLayout>
   );
