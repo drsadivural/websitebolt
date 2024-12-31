@@ -1,15 +1,37 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import PageHeader from '../../components/shared/PageHeader';
-import AIBoxCard from '../../components/products/aibox/AIBoxCard';
+import TabNavigation from '../../components/products/aibox/TabNavigation';
+import OverviewTab from '../../components/products/aibox/tabs/OverviewTab';
+import FeaturesTab from '../../components/products/aibox/tabs/FeaturesTab';
+import TechnologyTab from '../../components/products/aibox/tabs/TechnologyTab';
+import PricingTab from '../../components/products/aibox/tabs/PricingTab';
+import ReferencesTab from '../../components/products/aibox/tabs/ReferencesTab';
+import DemoTab from '../../components/products/aibox/tabs/DemoTab';
 import ProductDetailsModal from '../../components/products/aibox/ProductDetailsModal';
-import ViewToggle from '../../components/video-analytics/ViewToggle';
-import { aiboxFeatures } from '../../data/aiboxFeatures';
-import FadeInSection from '../../components/animations/FadeInSection';
 
 const AIBOX = () => {
   const [showModal, setShowModal] = useState(false);
-  const [view, setView] = useState<'grid' | 'list'>('grid');
+  const [activeTab, setActiveTab] = useState('features');
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <OverviewTab />;
+      case 'features':
+        return <FeaturesTab />;
+      case 'technology':
+        return <TechnologyTab />;
+      case 'pricing':
+        return <PricingTab />;
+      case 'references':
+        return <ReferencesTab />;
+      case 'demo':
+        return <DemoTab />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -32,50 +54,11 @@ const AIBOX = () => {
         </div>
       </div>
 
-      {/* Features Grid */}
-      <div className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-white">
-              Comprehensive Server Solutions
-            </h2>
-            <ViewToggle view={view} onViewChange={setView} />
-          </div>
-
-          <div className={`${
-            view === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
-              : 'space-y-6'
-          }`}>
-            {aiboxFeatures.map((feature, index) => (
-              <FadeInSection key={feature.title} delay={index * 100}>
-                {view === 'grid' ? (
-                  <AIBoxCard {...feature} />
-                ) : (
-                  <div className="bg-gray-800 rounded-lg overflow-hidden hover:bg-gray-700 transition-colors">
-                    <div className="flex">
-                      <div className="w-48 h-48 flex-shrink-0">
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-1 p-6">
-                        <div className="flex items-center mb-2">
-                          <feature.icon className="w-6 h-6 text-blue-400 mr-2" />
-                          <h3 className="text-xl font-semibold text-white">
-                            {feature.title}
-                          </h3>
-                        </div>
-                        <p className="text-gray-300">{feature.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </FadeInSection>
-            ))}
-          </div>
+      <div className="relative">
+        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+        
+        <div className="container mx-auto px-4 py-12">
+          {renderTabContent()}
         </div>
       </div>
 

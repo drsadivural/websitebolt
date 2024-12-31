@@ -21,7 +21,8 @@ const Footer = () => {
             <ul className="space-y-2 text-sm">
               <li><Link to="/company/about" className="hover:text-blue-400">About Us</Link></li>
               <li><Link to="/contact/sales" className="hover:text-blue-400">Contact</Link></li>
-              <li><Link to="/privacy-policy" className="hover:text-blue-400">Privacy Policy</Link></li>
+              <li><Link to="/legal" className="hover:text-blue-400">Legal</Link></li>
+              <li><Link to="/sitemap" className="hover:text-blue-400">Sitemap</Link></li>
             </ul>
           </div>
           <div>
@@ -45,11 +46,14 @@ const Footer = () => {
               © {new Date().getFullYear()} Ayonix Corporation. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <Link to="/terms" className="text-sm text-gray-400 hover:text-blue-400">
-                Terms of Service
+              <Link to="/legal" className="text-sm text-gray-400 hover:text-blue-400">
+                Legal
               </Link>
               <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-blue-400">
                 Privacy Policy
+              </Link>
+              <Link to="/sitemap" className="text-sm text-gray-400 hover:text-blue-400">
+                Sitemap
               </Link>
             </div>
           </div>

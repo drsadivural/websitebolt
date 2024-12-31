@@ -1,41 +1,48 @@
 import React, { useState } from 'react';
 import PageHeader from '../../components/shared/PageHeader';
-import ProductCard from '../../components/products/shared/ProductCard';
-import ViewToggle from '../../components/video-analytics/ViewToggle';
-import { faceRecognitionFeatures } from '../../data/faceRecognitionFeatures';
-import FadeInSection from '../../components/animations/FadeInSection';
+import TabNavigation from '../../components/products/face-recognition/TabNavigation';
+import OverviewTab from '../../components/products/face-recognition/tabs/OverviewTab';
+import FeaturesTab from '../../components/products/face-recognition/tabs/FeaturesTab';
+import TechnologyTab from '../../components/products/face-recognition/tabs/TechnologyTab';
+import PricingTab from '../../components/products/face-recognition/tabs/PricingTab';
+import ReferencesTab from '../../components/products/face-recognition/tabs/ReferencesTab';
+import DemoTab from '../../components/products/face-recognition/tabs/DemoTab';
 
 const FaceRecognition = () => {
-  const [view, setView] = useState<'grid' | 'list'>('grid');
+  const [activeTab, setActiveTab] = useState('features');
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <OverviewTab />;
+      case 'features':
+        return <FeaturesTab />;
+      case 'technology':
+        return <TechnologyTab />;
+      case 'pricing':
+        return <PricingTab />;
+      case 'references':
+        return <ReferencesTab />;
+      case 'demo':
+        return <DemoTab />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-900">
       <PageHeader
         title="Face Recognition"
-        description="Next-generation biometric security powered by advanced AI"
+        description="Next-generation biometric security powered by Ayonix AI"
         image="https://images.unsplash.com/photo-1517913451214-e22ce660e086?q=80&w=2896"
       />
 
-      <div className="py-16 px-4">
-        <div className="container mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h2 className="text-3xl font-bold text-white">
-              Advanced Face Recognition Features
-            </h2>
-            <ViewToggle view={view} onViewChange={setView} />
-          </div>
-
-          <div className={`${
-            view === 'grid'
-              ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'
-              : 'space-y-6'
-          }`}>
-            {faceRecognitionFeatures.map((feature, index) => (
-              <FadeInSection key={feature.title} delay={index * 100}>
-                <ProductCard {...feature} layout={view} />
-              </FadeInSection>
-            ))}
-          </div>
+      <div className="relative">
+        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
+        
+        <div className="container mx-auto px-4 py-12">
+          {renderTabContent()}
         </div>
       </div>
     </div>

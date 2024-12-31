@@ -17,7 +17,7 @@ const HeroSection = () => {
         >
           {/* Primary Video */}
           <source
-            src="https://videos.pexels.com/video-files/3141208/3141208-uhd_2560_1440_25fps.mp4"
+            src="https://videos.pexels.com/video-files/8328042/8328042-uhd_2560_1440_25fps.mp4"
             type="video/mp4"
           />
           {/* Fallback Video */}

@@ -14,7 +14,17 @@ import Location from './pages/company/Location';
 import References from './pages/company/References';
 import ContactPage from './pages/contact/ContactPage';
 import Login from './pages/auth/Login';
+
+// Legal Pages
+import LegalHub from './pages/legal/LegalHub';
+import TermsOfService from './pages/legal/TermsOfService';
+import SoftwareLicense from './pages/legal/SoftwareLicense';
+import SalesRefund from './pages/legal/SalesRefund';
+import LegalNotices from './pages/legal/LegalNotices';
+import Copyright from './pages/legal/Copyright';
+import Trademarks from './pages/legal/Trademarks';
 import PrivacyPolicy from './pages/legal/PrivacyPolicy';
+import Sitemap from './pages/legal/Sitemap';
 
 // Product Pages
 import AISolutions from './pages/products/AISolutions';
@@ -83,7 +93,15 @@ function App() {
                   <Route path="/auth/login" element={<Login />} />
 
                   {/* Legal */}
+                  <Route path="/legal" element={<LegalHub />} />
+                  <Route path="/legal/terms" element={<TermsOfService />} />
+                  <Route path="/legal/licenses" element={<SoftwareLicense />} />
+                  <Route path="/legal/sales" element={<SalesRefund />} />
+                  <Route path="/legal/notices" element={<LegalNotices />} />
+                  <Route path="/legal/copyright" element={<Copyright />} />
+                  <Route path="/legal/trademarks" element={<Trademarks />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/sitemap" element={<Sitemap />} />
 
                   {/* Search */}
                   <Route path="/search" element={<SearchResults />} />
